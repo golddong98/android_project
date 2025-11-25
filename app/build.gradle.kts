@@ -54,7 +54,7 @@ android {
 
 dependencies {
 
-    val lifecycle_version = "2.6.2"
+    val lifecycle_version = "2.8.0"
     //val arch_version = "2.2.0"
     val room_version = "2.6.1"
     val nav_version = "2.7.5"           // Navigation 안정화 버전 (API 34 호환)
@@ -67,24 +67,28 @@ dependencies {
 
 
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.core:core-ktx:$core_ktx_version")
+    implementation("androidx.fragment:fragment-ktx:1.7.0")
+    implementation("androidx.activity:activity-compose:$activity_version")
+
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
-    //implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:2.10.0")
-    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
-    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+
     implementation("androidx.room:room-runtime:$room_version")
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
     implementation(platform("androidx.compose:compose-bom:$compose_bom"))
     implementation("androidx.compose.ui:ui:$compose_version")
     implementation("androidx.compose.ui:ui-graphics:$compose_version")
     implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
-    implementation("androidx.compose.material3:material3:1.1.2")
+    implementation("androidx.compose.material3:material3")
+
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:$test_junit_version")
     androidTestImplementation("androidx.test.espresso:espresso-core:$espresso_version")

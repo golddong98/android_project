@@ -32,10 +32,10 @@
         android:label="Create/Edit Habit"
         tools:layout="@layout/fragment_create_update_habit">
 
-        <argument
-            android:name="habitId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+<!--        <argument-->
+<!--            android:name="habitId"-->
+<!--            app:argType="integer"-->
+<!--            android:defaultValue="-1" />-->
 
     </fragment>
 

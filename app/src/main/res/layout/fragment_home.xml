@@ -5,18 +5,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment"> <TextView
-    android:id="@+id/text_app_title"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="SimpleNote"
-    android:textSize="28sp"
-    android:textStyle="bold"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/button_start"
+    tools:context=".ui.home.HomeFragment">
+
+    <ImageView
+        android:id="@+id/image_note"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_note_icon"
+    android:contentDescription="노트 앱 아이콘"
+    app:layout_constraintBottom_toTopOf="@id/text_app_title"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintVertical_chainStyle="packed"/>
+    app:layout_constraintVertical_chainStyle="packed"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.4" />
+
+
+    <TextView
+        android:id="@+id/text_app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SimpleNote"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+    app:layout_constraintTop_toBottomOf="@id/image_note"
+    app:layout_constraintBottom_toTopOf="@id/button_start"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
 
     <Button
         android:id="@+id/button_start"
