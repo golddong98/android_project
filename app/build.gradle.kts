@@ -67,7 +67,7 @@ dependencies {
 
 
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.core:core-ktx:$core_ktx_version")
     implementation("androidx.fragment:fragment-ktx:1.7.0")
     implementation("androidx.activity:activity-compose:$activity_version")
