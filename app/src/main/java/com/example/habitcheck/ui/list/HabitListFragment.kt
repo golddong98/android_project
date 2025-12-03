@@ -13,7 +13,7 @@ import com.example.habitcheck.databinding.FragmentHabitListBinding
 
 class HabitListFragment : Fragment() {
     // ... (바인딩 및 ViewModel 선언 생략)
-
+    val a = 7
     // Adapter 선언
     private lateinit var habitAdapter: HabitListAdapter
     private val habitViewModel: HabitViewModel by activityViewModels() // ViewModel 선언
