@@ -7,17 +7,26 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.habitcheck.data.HabitDatabase
 import com.example.habitcheck.data.entity.HabitEntity
+import com.example.habitcheck.data.repository.HabitRepository
 import com.example.habitcheck.databinding.FragmentCreateUpdateHabitBinding
 import com.example.habitcheck.viewmodel.HabitViewModel
+import com.example.habitcheck.viewmodel.HabitViewModelFactory
 
 class CreateUpdateHabitFragment : Fragment() {
 
     private var _binding: FragmentCreateUpdateHabitBinding? = null
     private val binding get() = _binding!!
 
-    private val habitViewModel: HabitViewModel by activityViewModels()
+    //private val habitViewModel: HabitViewModel by activityViewModels()
+    private val habitViewModel: HabitViewModel by viewModels {
+        val habitDatabase = HabitDatabase.getDatabase(requireContext())
+        val habitRepository = HabitRepository(habitDatabase.habitDao())
+        HabitViewModelFactory(habitRepository)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +47,7 @@ class CreateUpdateHabitFragment : Fragment() {
 
         binding.saveButton.setOnClickListener {
             val name = binding.name.text.toString()
-            val description = binding.description.text.toString()
+            val description = binding.description.text.toString().ifEmpty { null }
             habitViewModel.saveHabit(name, description)
 
             findNavController().popBackStack()

@@ -5,11 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import com.example.habitcheck.HabitApplication
-import com.example.habitcheck.viewmodel.HabitViewModel
-import com.example.habitcheck.viewmodel.HabitViewModelFactory
-import com.example.habitcheck.R
 import com.example.habitcheck.databinding.FragmentHomeBinding
 import androidx.navigation.fragment.findNavController
 

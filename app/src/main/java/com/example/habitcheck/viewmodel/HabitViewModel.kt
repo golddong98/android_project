@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class HabitViewModel(private val repository: HabitRepository): ViewModel() {
 
 
-    val allHabits: LiveData<List<HabitEntity>> = repository.allHabits.asLiveData()
+    val allHabits: LiveData<List<HabitEntity>> = repository.allHabits
 
     fun saveHabit(name: String, description: String?) = viewModelScope.launch{
         val habitEntity = HabitEntity(

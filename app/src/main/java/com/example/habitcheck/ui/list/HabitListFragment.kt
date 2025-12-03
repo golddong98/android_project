@@ -1,7 +1,9 @@
 package com.example.habitcheck.ui.list
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -9,30 +11,47 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.habitcheck.data.entity.HabitEntity
 import com.example.habitcheck.viewmodel.HabitViewModel
 import com.example.habitcheck.databinding.FragmentHabitListBinding
+import com.example.habitcheck.databinding.FragmentHomeBinding
+
 // ... (생략)
 
 class HabitListFragment : Fragment() {
     // ... (바인딩 및 ViewModel 선언 생략)
 
+    //삭제
+    private var _binding: FragmentHabitListBinding? = null
+    private val binding get() = _binding!!
+
+
     // Adapter 선언
     private lateinit var habitAdapter: HabitListAdapter
     private val habitViewModel: HabitViewModel by activityViewModels() // ViewModel 선언
+
+
+    //삭제
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHabitListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // 1. FAB 클릭 리스너 (기존 코드)
-//        binding.fabAddHabit.setOnClickListener {
-//            val action = HabitListFragmentDirections
-//                .actionHabitListFragmentToCreateUpdateHabitFragment()
-//            findNavController().navigate(action)
-//        }
+        binding.fabAddHabit.setOnClickListener {
+            val action = HabitListFragmentDirections
+                .actionHabitListFragmentToCreateUpdateHabitFragment()
+            findNavController().navigate(action)
+        }
 
         // 2. Adapter 초기화 및 RecyclerView 설정
-//        initRecyclerView()
+        initRecyclerView()
 
         // 3. ViewModel의 LiveData 관찰
-//        observeHabits()
+        observeHabits()
     }
 
     private fun initRecyclerView() {

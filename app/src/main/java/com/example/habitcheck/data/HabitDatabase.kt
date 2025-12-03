@@ -8,7 +8,10 @@ import com.example.habitcheck.data.entity.HabitEntity
 import com.example.habitcheck.data.entity.dao.HabitDao
 
 
-@Database(entities = [HabitEntity::class], version = 1, exportSchema = false)
+@Database(entities = [HabitEntity::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class HabitDatabase : RoomDatabase() {
 
     abstract fun habitDao(): HabitDao
@@ -19,13 +22,15 @@ abstract class HabitDatabase : RoomDatabase() {
 
         fun getDatabase(context: Context): HabitDatabase {
             return INSTANCE ?: synchronized(this){
-                val instance = Room.databaseBuilder(
+                INSTANCE?: Room.databaseBuilder(
                     context.applicationContext,
                     HabitDatabase::class.java,
                     "habit_database"
-                ).build()
-                INSTANCE = instance
-                instance
+                )
+                    .fallbackToDestructiveMigration()
+                    .allowMainThreadQueries()   //
+                    .build()
+                    .also { INSTANCE = it }
             }
         }
     }
