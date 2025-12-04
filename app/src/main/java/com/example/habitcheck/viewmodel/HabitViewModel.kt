@@ -22,12 +22,14 @@ class HabitViewModel(private val repository: HabitRepository): ViewModel() {
     }
 
 
-    fun updateHabit(habit: HabitEntity) = viewModelScope.launch {
-        repository.update(habit)
+    fun updateHabit(id: Int, name: String, description: String) = viewModelScope.launch {
+        repository.updateHabit(id, name, description)
     }
     fun deleteHabitById (id: List<Int>) = viewModelScope.launch {
         repository.deleteHabitById(id)
     }
+
+    fun getHabitById(id: Int): LiveData<HabitEntity> = repository.getHabitById(id)
 }
 
 // ViewModel Factory (의존성 주입을 위한 보일러플레이트)

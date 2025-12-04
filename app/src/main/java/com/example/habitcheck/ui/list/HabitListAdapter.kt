@@ -9,6 +9,7 @@ import com.example.habitcheck.data.entity.HabitEntity
 import com.example.habitcheck.databinding.ItemHabitRowBinding
 
 class HabitListAdapter(
+    private val onEditClick: (HabitEntity) -> Unit,
     private val onSelectionChanged: (Int) -> Unit
 ) : ListAdapter<HabitEntity, HabitListAdapter.HabitViewHolder>(HabitDiffCallback()) {
 
@@ -25,9 +26,11 @@ class HabitListAdapter(
             textViewHabitName.text = habit.name
             textViewHabitDescription.text = habit.description
 
+            textViewHabitName.setOnClickListener { onEditClick(habit) }
+            textViewHabitDescription.setOnClickListener { onEditClick(habit) }
+
             checkboxHabitCompleted.setOnCheckedChangeListener(null)
             checkboxHabitCompleted.isChecked = selectedIds.contains(habit.id)
-
             checkboxHabitCompleted.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) selectedIds.add(habit.id) else selectedIds.remove(habit.id)
                 onSelectionChanged(selectedIds.size)

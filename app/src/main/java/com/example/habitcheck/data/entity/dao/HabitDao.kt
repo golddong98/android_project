@@ -15,13 +15,20 @@ interface HabitDao {
     fun getAllHabits(): LiveData<List<HabitEntity>>
 
     @Query("SELECT * FROM habits WHERE id = :habitId")
-    fun getHabitById(habitId: Int): LiveData<HabitEntity?>
+    fun getHabitById(habitId: Int): LiveData<HabitEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(habit: HabitEntity)
 
-    @Update
-    suspend fun update(habit: HabitEntity){}
+
+    @Query("""
+    UPDATE habits
+    SET
+      name = COALESCE(:name, name),
+      description = COALESCE(:description, description)
+    WHERE id = :id
+    """)
+    suspend fun updateHabit(id: Int, name: String, description: String)
 
     @Query("DELETE FROM habits")
     suspend fun deleteAll()

@@ -62,6 +62,11 @@ class HabitListFragment : Fragment() {
 
     private fun initRecyclerView() {
         habitAdapter = HabitListAdapter(
+            onEditClick = { habit ->
+                val action = HabitListFragmentDirections
+                    .actionHabitListFragmentToCreateUpdateHabitFragment(habit.id)
+                findNavController().navigate(action) },
+
             onSelectionChanged = { selectedCount ->
                 binding.deleteButton.isEnabled = selectedCount > 0
                 binding.deleteButton.alpha = if (selectedCount > 0) 1.0f else 0.4f
