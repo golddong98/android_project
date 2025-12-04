@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.habitcheck.data.entity.HabitEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface HabitDao {
@@ -27,8 +26,8 @@ interface HabitDao {
     @Query("DELETE FROM habits")
     suspend fun deleteAll()
 
-    @Query("DELETE FROM habits WHERE id = :habitId")
-    suspend fun deleteHabitById(habitId: Int)
+    @Query("DELETE FROM habits WHERE id IN (:habitId)")
+    suspend fun deleteHabitById(habitId: List<Int>)
 
 
 }

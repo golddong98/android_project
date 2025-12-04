@@ -1,12 +1,9 @@
 package com.example.habitcheck.viewmodel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.fragment.findNavController
 import com.example.habitcheck.data.entity.HabitEntity
 import com.example.habitcheck.data.repository.HabitRepository
 import kotlinx.coroutines.launch
@@ -24,15 +21,21 @@ class HabitViewModel(private val repository: HabitRepository): ViewModel() {
         repository.insert(habitEntity)
     }
 
+    /*
     fun updateHabit(habit: HabitEntity) = viewModelScope.launch {
         repository.update(habit)
     }
-
     fun deleteHabit(id: Int) = viewModelScope.launch {
         repository.deleteHabitById(id)
     }
+     */
 
-
+    fun updateHabit(habit: HabitEntity) = viewModelScope.launch {
+        repository.update(habit)
+    }
+    fun deleteHabitById (id: List<Int>) = viewModelScope.launch {
+        repository.deleteHabitById(id)
+    }
 }
 
 // ViewModel Factory (의존성 주입을 위한 보일러플레이트)

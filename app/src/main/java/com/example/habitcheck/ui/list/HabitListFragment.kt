@@ -43,12 +43,29 @@ class HabitListFragment : Fragment() {
 
         initRecyclerView()
         observeHabits()
+
+        binding.deleteButton.isEnabled = false
+        binding.deleteButton.alpha = 0.4f
+
+        binding.deleteButton.setOnClickListener {
+            val ids = habitAdapter.selectedIds.toList()
+            if (ids.isNotEmpty()) {
+                habitViewModel.deleteHabitById(ids)   // <- 변경
+                habitAdapter.selectedIds.clear()
+                habitAdapter.notifyDataSetChanged()
+
+                binding.deleteButton.isEnabled = false
+                binding.deleteButton.alpha = 0.4f
+            }
+        }
     }
 
     private fun initRecyclerView() {
         habitAdapter = HabitListAdapter(
-            onItemClick = { },
-            onCheckChange = { _, _ -> }
+            onSelectionChanged = { selectedCount ->
+                binding.deleteButton.isEnabled = selectedCount > 0
+                binding.deleteButton.alpha = if (selectedCount > 0) 1.0f else 0.4f
+            }
         )
 
         binding.rvHabitList.apply {
@@ -56,6 +73,7 @@ class HabitListFragment : Fragment() {
             adapter = habitAdapter
         }
     }
+
 
     private fun observeHabits() {
         habitViewModel.allHabits.observe(viewLifecycleOwner) { habits ->

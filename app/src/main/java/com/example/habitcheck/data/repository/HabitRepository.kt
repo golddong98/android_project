@@ -3,7 +3,6 @@ package com.example.habitcheck.data.repository
 import androidx.lifecycle.LiveData
 import com.example.habitcheck.data.entity.HabitEntity
 import com.example.habitcheck.data.entity.dao.HabitDao
-import kotlinx.coroutines.flow.Flow
 
 class HabitRepository(private val habitDao: HabitDao) {
     val allHabits: LiveData<List<HabitEntity>> = habitDao.getAllHabits()
@@ -16,7 +15,7 @@ class HabitRepository(private val habitDao: HabitDao) {
         habitDao.update(habit)
     }
 
-    suspend fun deleteHabitById(id: Int){
+    suspend fun deleteHabitById(id: List<Int>){
         habitDao.deleteHabitById(id)
     }
 }
