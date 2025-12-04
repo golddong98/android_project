@@ -12,7 +12,7 @@
         android:id="@+id/name_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="습관 이름 (필수)"
+        android:hint="habit name (necessary)"
         app:boxBackgroundMode="outline"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:inputType="textCapSentences"
             android:maxLength="50"
-            tools:text="습관1" />
+            tools:text="habit example" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -32,7 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="상세 설명 (선택)"
+        android:hint="description (optional)"
         app:boxBackgroundMode="outline"
         app:layout_constraintTop_toBottomOf="@id/name_layout"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
             android:gravity="top|start"
             android:inputType="textMultiLine"
             android:scrollbars="vertical"
-            tools:text="습관 상세 설명1" />
+            tools:text="description example" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -64,7 +64,7 @@
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="취소"
+            android:text="cancel"
             android:layout_marginEnd="8dp"
             style="@style/Widget.MaterialComponents.Button.TextButton" />
 
@@ -72,7 +72,7 @@
             android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="저장하기"
+            android:text="save"
             android:enabled="true" />
     </LinearLayout>
 

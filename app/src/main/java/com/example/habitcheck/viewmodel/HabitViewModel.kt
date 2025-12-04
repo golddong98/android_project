@@ -16,19 +16,11 @@ class HabitViewModel(private val repository: HabitRepository): ViewModel() {
     fun saveHabit(name: String, description: String?) = viewModelScope.launch{
         val habitEntity = HabitEntity(
             name = name,
-            description = description?: "파이팅~"
+            description = description?: "good luck!"
         )
         repository.insert(habitEntity)
     }
 
-    /*
-    fun updateHabit(habit: HabitEntity) = viewModelScope.launch {
-        repository.update(habit)
-    }
-    fun deleteHabit(id: Int) = viewModelScope.launch {
-        repository.deleteHabitById(id)
-    }
-     */
 
     fun updateHabit(habit: HabitEntity) = viewModelScope.launch {
         repository.update(habit)
