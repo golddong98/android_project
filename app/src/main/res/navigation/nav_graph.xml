@@ -28,14 +28,14 @@
 
     <fragment
         android:id="@+id/createUpdateHabitFragment"
-        android:name="com.example.habitcheck.CreateUpdateHabitFragment"
-        android:label="Create/Edit Habit"
+        android:name="com.example.habitcheck.ui.habits.CreateUpdateHabitFragment"
+        android:label="CreateUpdateHabit"
         tools:layout="@layout/fragment_create_update_habit">
 
-<!--        <argument-->
-<!--            android:name="habitId"-->
-<!--            app:argType="integer"-->
-<!--            android:defaultValue="-1" />-->
+        <argument
+            android:name="habitId"
+            app:argType="integer"
+            android:defaultValue="-1" />
 
     </fragment>
 
